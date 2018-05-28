@@ -4,6 +4,14 @@
 		agent any
 		triggers { pollSCM('* * * * *') }
 		
+		stages{
+			stage('Mi prueba'){
+				steps{
+					echo 'Bienvenido a Jenkins'
+				}
+			}
+		}
+
 		stages {
 			stage('Probar unitariamente') { 
 				steps { 
