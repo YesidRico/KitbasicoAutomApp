@@ -12,7 +12,7 @@
 			}
 		
 			
-			stage('Analisis de código') { 
+			stage('Analisis de cï¿½digo') { 
 				steps { 
 					withSonarQubeEnv('SonarQubeLocal') {
 						bat 'anali_code.bat'
@@ -21,7 +21,7 @@
 				}
 			}
 			
-			stage('Verificar calidad técnica') { 
+			stage('Verificar calidad tï¿½cnica') { 
 				steps { 
 					script{					
 					timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
@@ -43,7 +43,7 @@
 				}
 			}
 			
-			stage('Desplegar Integración') { 
+			stage('Desplegar Integraciï¿½n') { 
 				steps { 
 					bat "deploy-bd.bat"
 					bat "deploy-app.bat"
@@ -85,7 +85,7 @@
 						extensions: [[$class: 'RelativeTargetDirectory', 
 							relativeTargetDir: 'KitBasicoAutomApp-Ops']], 
 						submoduleCfg: [], 
-						userRemoteConfigs: [[url: 'https://github.com/mauro2357/KitBasicoAutomApp-Ops.git']]])     
+						userRemoteConfigs: [[url: 'https://github.com/yesidrico/KitBasicoAutomApp-Ops.git']]])     
 			      }
 					bat 'mkdir "KitBasicoAutomApp/build/libs/config"'
 					bat 'xcopy "KitBasicoAutomApp-Ops/config" "KitBasicoAutomApp/build/libs/config"'
@@ -99,7 +99,7 @@
 		
 		post {
 			failure {
-				mail to: 'mauro2357@gmail.com',
+				mail to: 'farid.rico@tecnofactor.com',
 					subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
 					body: "Something is wrong with ${env.BUILD_URL}"
 			}
